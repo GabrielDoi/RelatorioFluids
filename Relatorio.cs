@@ -1,20 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace RelatorioFluids
-{
-    public partial class Relatorio : Form
-    {
+namespace RelatorioFluids {
+    public partial class Relatorio : Form {
         private readonly Repositorio repositorio;
 
-        public Relatorio()
-        {
+        public Relatorio() {
             InitializeComponent();
             repositorio = new Repositorio();
             Init();
         }
 
-        public void Init()
-        {
+        public void Init() {
             repositorio.Database.Migrate();
 
             dtDataFim.Value = DateTime.UtcNow.AddHours(-3);
@@ -23,13 +19,11 @@ namespace RelatorioFluids
             FiltrarDados();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e) {
             FiltrarDados();
         }
 
-        private void FiltrarDados()
-        {
+        private void FiltrarDados() {
             var listDados = repositorio.LerDados(
                 dataInicio: dtDataInicio.Value,
                 dataFim: dtDataFim.Value,

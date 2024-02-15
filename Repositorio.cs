@@ -23,7 +23,7 @@ namespace RelatorioFluids
             string loteSO102,
             string loteMF3)
         {
-            var query = Dosagem.Where(x => 
+            var query = Dosagem.AsNoTracking().Where(x => 
                 x.DataHora >= dataInicio
                 && x.DataHora <= dataFim
                 && (masseira == 0 || x.Masseira == masseira)
